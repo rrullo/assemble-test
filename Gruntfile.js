@@ -5,9 +5,8 @@ module.exports = function(grunt) {
   grunt.initConfig({
 	pkg: grunt.file.readJSON('package.json'),
 
-
     assemble: {
-      options: {
+	  options: {
         flatten: true
       },
       compact: {
@@ -21,11 +20,10 @@ module.exports = function(grunt) {
       },
       files_array: {
         files: [
-          { dest: 'dest/array/', src: ['src/pages/**/*.hbs'] }
+          { dest: 'dest/array/', cwd: 'src/pages', expand: true, src: ['**/*.hbs'] }
         ]
       }
     }
-
  });
 
   // These plugins provide necessary tasks.
