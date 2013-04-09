@@ -4,14 +4,24 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
 	pkg: grunt.file.readJSON('package.json'),
-	
+
+
     assemble: {
       options: {
-        version: '<%= pkg.version %>'
+        flatten: true
       },
-      pages: {
+      compact: {
+        src:  'src/pages/**/*.hbs',
+        dest: 'dest/compact/'
+      },
+      files_object: {
+        files: {
+          'dest/object/': ['src/pages/**/*.hbs']
+        }
+      },
+      files_array: {
         files: [
-          { flatten: true, dest: 'dest/', src: ['src/pages/**/*.hbs'] }
+          { dest: 'dest/array/', src: ['src/pages/**/*.hbs'] }
         ]
       }
     }
