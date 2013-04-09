@@ -4,7 +4,7 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
 	pkg: grunt.file.readJSON('package.json'),
-	
+
     // Task configuration.
     jshint: {
       options: {
@@ -41,12 +41,15 @@ module.exports = function(grunt) {
 	assemble: {
             options: {
                 engine: 'handlebars',
-                flatten: true,
                 version: '<%=pkg.version%>'
             },
             pages: {
                 files: [
-                    {dest: 'target/docs/', src: ['src/pages/**/*.hbs']
+                    {
+                      expand: true,
+                      cwd: 'src/pages',
+                      dest: 'target/docs/',
+                      src: ['**/*.hbs']
                     }
                 ]
             }
